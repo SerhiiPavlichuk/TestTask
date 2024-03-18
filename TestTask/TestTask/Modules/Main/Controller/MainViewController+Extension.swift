@@ -39,13 +39,24 @@ extension MainViewController: TrashContainerViewDelegate {
 }
 
 extension MainViewController: MainViewModelProtocol {
+    func showErrorAlert() {
+        let alert = AlertManager(type: .error, delegate: self)
+        present(alert.createAlert(), animated: true)
+    }
+    
     func showPermissionsAlert() {
-        let alert = AlertManager(delegate: self)
+        let alert = AlertManager(type: .permissions, delegate: self)
         present(alert.createAlert(), animated: true)
     }
 }
 
 extension MainViewController: AlertManagerDelegate {
+    func retry() {
+        Task {
+            await viewModel.getAllImageAssets()
+        }
+    }
+    
     func goToSettings() {
         openSettings()
     }

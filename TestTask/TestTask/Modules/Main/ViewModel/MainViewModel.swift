@@ -6,9 +6,11 @@
 //
 
 import Foundation
+import Photos
 
 protocol MainViewModelProtocol: AnyObject {
     func showPermissionsAlert()
+    func showErrorAlert()
 }
 
 final class MainViewModel {
@@ -17,17 +19,26 @@ final class MainViewModel {
     
     weak var vc: MainViewModelProtocol?
     
-
+    var assets: [PHAsset] = []
+    
     // MARK: - Init
 
     func askPermissions() async {
         let status = await PhotoManager.shared.checkPermission()
         if status == .authorized {
-            #warning("get fetch")
+            await getAllImageAssets()
         } else if status == .denied {
             DispatchQueue.main.async { [weak self] in
                 self?.vc?.showPermissionsAlert()
             }
+        }
+    }
+    
+    func getAllImageAssets() async {
+        do {
+            let assets = try await PhotoManager.shared.fetchAllImageAssets()
+        } catch {
+            vc?.showErrorAlert()
         }
     }
 }

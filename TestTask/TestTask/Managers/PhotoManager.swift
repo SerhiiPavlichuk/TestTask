@@ -11,6 +11,8 @@ import Photos
 final class PhotoManager {
     static let shared = PhotoManager()
     
+    private init () {}
+    
     func checkPermission() async -> PHAuthorizationStatus {
         return await withCheckedContinuation { continuation in
             let status = PHPhotoLibrary.authorizationStatus()
