@@ -17,7 +17,7 @@ protocol ViewWithUserImageDelegate: AnyObject {
     func savePressed()
 }
 
-final class ViewWithUserImage: UIView {
+final class ViewWithUserImage: CustomView {
     
     //MARK: - Views
 
@@ -40,26 +40,17 @@ final class ViewWithUserImage: UIView {
     weak var dataSource: ViewWithUserImageDataSource?
     weak var delegate: ViewWithUserImageDelegate?
     
-    init() {
-        super.init(frame: .zero)
-        setupUI()
+    override init() {
+        super.init()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: - Layout
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        setupLayout()
-    }
-    
-    
     //MARK: - Methods
     
-    private func setupUI() {
+    override func setupUI() {
         backgroundColor = .clear
         clipsToBounds = true
         
@@ -92,13 +83,12 @@ final class ViewWithUserImage: UIView {
     }
     
     private func saveButtonPressed() {
-        delegate?.savepresed()
+        delegate?.savePressed()
     }
     
-    private func setupLayout() {
-        layer.cornerRadius = self.bounds.height * 0.038
-        layer.cornerCurve = .continuous
-        
+    //MARK: - Layout
+    
+    override func setupLayout() {
         userImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
@@ -116,5 +106,11 @@ final class ViewWithUserImage: UIView {
             make.bottom.equalToSuperview().inset(16)
             make.trailing.equalToSuperview().inset(60)
         }
+    }
+    
+    override func setupSizes() {
+        layer.cornerRadius = self.bounds.height * 0.038
+        layer.cornerCurve = .continuous
+        
     }
 }

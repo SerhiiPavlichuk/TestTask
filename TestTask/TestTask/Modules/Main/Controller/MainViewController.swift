@@ -19,6 +19,7 @@ final class MainViewController: UIViewController {
     //MARK: - Views
     
     let viewWithUserImage = ViewWithUserImage()
+    let trashContainerView = TrashContainerView()
     
     //MARK: - Properties
     
@@ -41,6 +42,7 @@ final class MainViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         initializeViews()
+   
     }
     
     override func viewDidLayoutSubviews() {
@@ -54,13 +56,16 @@ final class MainViewController: UIViewController {
         view.backgroundColor = .background
         
         view.addSubviews(
-            viewWithUserImage
+            viewWithUserImage,
+            trashContainerView
         )
     }
     
     private func initializeViews() {
         viewWithUserImage.dataSource = self
         viewWithUserImage.delegate = self
+        trashContainerView.dataSource = self
+        trashContainerView.delegate = self
     }
     
     //MARK: - Layout
@@ -70,6 +75,12 @@ final class MainViewController: UIViewController {
             make.leading.trailing.equalToSuperview().inset(Constraints.leadingTrailingInset)
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(40)
             make.height.equalToSuperview().multipliedBy(0.695)
+        }
+        
+        trashContainerView.snp.makeConstraints { make in
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(16)
+            make.leading.trailing.equalToSuperview().inset(Constraints.leadingTrailingInset)
+            make.height.equalToSuperview().multipliedBy(0.08)
         }
     }
 }

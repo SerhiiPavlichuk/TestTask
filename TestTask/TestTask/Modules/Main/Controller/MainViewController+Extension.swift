@@ -23,3 +23,16 @@ extension MainViewController: ViewWithUserImageDelegate {
 #warning("logic")
     }
 }
+
+extension MainViewController: TrashContainerViewDataSource {
+    func countOfImages(_ view: TrashContainerView) -> Int? {
+#warning("logic")
+        return 0
+    }
+}
+
+extension MainViewController: TrashContainerViewDelegate {
+    func emptyTrashPressed() {
+#warning("logic")
+    }
+}

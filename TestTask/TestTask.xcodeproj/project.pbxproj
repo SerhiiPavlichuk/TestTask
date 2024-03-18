@@ -23,6 +23,8 @@
 		CE40F30C2BA8C17700F5CFB1 /* ViewWithUserImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE40F30B2BA8C17700F5CFB1 /* ViewWithUserImage.swift */; };
 		CE40F30F2BA8C64000F5CFB1 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE40F30E2BA8C64000F5CFB1 /* CircleButton.swift */; };
 		CE40F3112BA8CACF00F5CFB1 /* MainViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE40F3102BA8CACF00F5CFB1 /* MainViewController+Extension.swift */; };
+		CE40F3132BA8CC5A00F5CFB1 /* TrashContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE40F3122BA8CC5A00F5CFB1 /* TrashContainerView.swift */; };
+		CE40F3162BA8D42B00F5CFB1 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE40F3152BA8D42B00F5CFB1 /* CustomView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +48,8 @@
 		CE40F30B2BA8C17700F5CFB1 /* ViewWithUserImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewWithUserImage.swift; sourceTree = "<group>"; };
 		CE40F30E2BA8C64000F5CFB1 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		CE40F3102BA8CACF00F5CFB1 /* MainViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+Extension.swift"; sourceTree = "<group>"; };
+		CE40F3122BA8CC5A00F5CFB1 /* TrashContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashContainerView.swift; sourceTree = "<group>"; };
+		CE40F3152BA8D42B00F5CFB1 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,7 @@
 				CE40F2FF2BA8BDF500F5CFB1 /* Modules */,
 				CE40F2FA2BA8BBB800F5CFB1 /* Builders */,
 				CE40F2F52BA8B7CA00F5CFB1 /* Helpers */,
+				CE40F3142BA8D42500F5CFB1 /* Base */,
 				CE40F2F02BA8B68A00F5CFB1 /* Extensions */,
 				CE40F2E92BA89AE200F5CFB1 /* Application */,
 				CE40F2EA2BA89AF300F5CFB1 /* Recources */,
@@ -202,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				CE40F30B2BA8C17700F5CFB1 /* ViewWithUserImage.swift */,
+				CE40F3122BA8CC5A00F5CFB1 /* TrashContainerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -212,6 +218,14 @@
 				CE40F30E2BA8C64000F5CFB1 /* CircleButton.swift */,
 			);
 			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		CE40F3142BA8D42500F5CFB1 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				CE40F3152BA8D42B00F5CFB1 /* CustomView.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -328,6 +342,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE40F3162BA8D42B00F5CFB1 /* CustomView.swift in Sources */,
 				CE40F2D62BA89A5B00F5CFB1 /* AppDelegate.swift in Sources */,
 				CE40F2F92BA8B96400F5CFB1 /* UIVIew+Extension.swift in Sources */,
 				CE40F2F72BA8B7D200F5CFB1 /* Images.swift in Sources */,
@@ -341,6 +356,7 @@
 				CE40F3092BA8BE6E00F5CFB1 /* MainViewController.swift in Sources */,
 				CE40F30C2BA8C17700F5CFB1 /* ViewWithUserImage.swift in Sources */,
 				CE40F3112BA8CACF00F5CFB1 /* MainViewController+Extension.swift in Sources */,
+				CE40F3132BA8CC5A00F5CFB1 /* TrashContainerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
