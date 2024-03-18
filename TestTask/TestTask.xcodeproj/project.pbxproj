@@ -25,6 +25,9 @@
 		CE40F3112BA8CACF00F5CFB1 /* MainViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE40F3102BA8CACF00F5CFB1 /* MainViewController+Extension.swift */; };
 		CE40F3132BA8CC5A00F5CFB1 /* TrashContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE40F3122BA8CC5A00F5CFB1 /* TrashContainerView.swift */; };
 		CE40F3162BA8D42B00F5CFB1 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE40F3152BA8D42B00F5CFB1 /* CustomView.swift */; };
+		CE40F3192BA8DAA000F5CFB1 /* PhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE40F3182BA8DAA000F5CFB1 /* PhotoManager.swift */; };
+		CE47ACCD2BA8DD5F00004476 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE47ACCC2BA8DD5F00004476 /* AlertManager.swift */; };
+		CE47ACCF2BA8E5E900004476 /* NoPermissionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE47ACCE2BA8E5E900004476 /* NoPermissionsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +53,9 @@
 		CE40F3102BA8CACF00F5CFB1 /* MainViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+Extension.swift"; sourceTree = "<group>"; };
 		CE40F3122BA8CC5A00F5CFB1 /* TrashContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashContainerView.swift; sourceTree = "<group>"; };
 		CE40F3152BA8D42B00F5CFB1 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
+		CE40F3182BA8DAA000F5CFB1 /* PhotoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoManager.swift; sourceTree = "<group>"; };
+		CE47ACCC2BA8DD5F00004476 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
+		CE47ACCE2BA8E5E900004476 /* NoPermissionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoPermissionsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +108,7 @@
 		CE40F2D42BA89A5B00F5CFB1 /* TestTask */ = {
 			isa = PBXGroup;
 			children = (
+				CE40F3172BA8DA8B00F5CFB1 /* Managers */,
 				CE40F30D2BA8C62D00F5CFB1 /* CustomViews */,
 				CE40F3032BA8BE2500F5CFB1 /* Factories */,
 				CE40F2FF2BA8BDF500F5CFB1 /* Modules */,
@@ -208,6 +215,7 @@
 			children = (
 				CE40F30B2BA8C17700F5CFB1 /* ViewWithUserImage.swift */,
 				CE40F3122BA8CC5A00F5CFB1 /* TrashContainerView.swift */,
+				CE47ACCE2BA8E5E900004476 /* NoPermissionsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -226,6 +234,15 @@
 				CE40F3152BA8D42B00F5CFB1 /* CustomView.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		CE40F3172BA8DA8B00F5CFB1 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				CE40F3182BA8DAA000F5CFB1 /* PhotoManager.swift */,
+				CE47ACCC2BA8DD5F00004476 /* AlertManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -343,7 +360,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE40F3162BA8D42B00F5CFB1 /* CustomView.swift in Sources */,
+				CE47ACCD2BA8DD5F00004476 /* AlertManager.swift in Sources */,
 				CE40F2D62BA89A5B00F5CFB1 /* AppDelegate.swift in Sources */,
+				CE40F3192BA8DAA000F5CFB1 /* PhotoManager.swift in Sources */,
 				CE40F2F92BA8B96400F5CFB1 /* UIVIew+Extension.swift in Sources */,
 				CE40F2F72BA8B7D200F5CFB1 /* Images.swift in Sources */,
 				CE40F2FC2BA8BBC300F5CFB1 /* LabelBuilder.swift in Sources */,
@@ -356,6 +375,7 @@
 				CE40F3092BA8BE6E00F5CFB1 /* MainViewController.swift in Sources */,
 				CE40F30C2BA8C17700F5CFB1 /* ViewWithUserImage.swift in Sources */,
 				CE40F3112BA8CACF00F5CFB1 /* MainViewController+Extension.swift in Sources */,
+				CE47ACCF2BA8E5E900004476 /* NoPermissionsView.swift in Sources */,
 				CE40F3132BA8CC5A00F5CFB1 /* TrashContainerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -504,10 +524,12 @@
 				DEVELOPMENT_TEAM = VVT5US76Z7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TestTask/Recources/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -537,10 +559,12 @@
 				DEVELOPMENT_TEAM = VVT5US76Z7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TestTask/Recources/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

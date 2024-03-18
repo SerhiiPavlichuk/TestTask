@@ -18,26 +18,48 @@ protocol TrashContainerViewDelegate: AnyObject {
 
 final class TrashContainerView: CustomView {
     
+    //MARK: - Constants
+    
+    private enum Constants {
+        static let countLabelText = "0"
+        static let countInfoLabelText = """
+                                        images in
+                                        the trash
+                                        """
+        static let countInfoLabelNumberOfLines = 2
+        static let emptytrashButtontext = "Empty Trash"
+        static let insetTen: CGFloat = 10
+        static let countLabelLeadingInset = 20
+        static let countInfoLabelLeadingInset = -10
+        static let emptyTrashButtonInset = 12
+        static let emptyTrashButtonWidthMultiplier = 0.5
+        static let parentCornerMultiplier = 0.33
+        static let countLabelFontSizeMultiplier = 0.36
+        static let countInfoLabelFontSizeMultiplier = 0.194
+    }
+    
     //MARK: - Views
     
     private let countLabel = LabelBuilder()
-        .setText("0")
+        .setText(Constants.countLabelText)
         .build()
     
     private let countInfoLabel = LabelBuilder()
-        .setText("""
-                    images in
-                    the trash
-                 """)
-        .setNumbersLines(2)
+        .setText(Constants.countInfoLabelText)
+        .setNumbersLines(Constants.countInfoLabelNumberOfLines)
         .build()
     
     private lazy var emptyTrashButton: UIButton = {
         var configuration = UIButton.Configuration.filled()
-        configuration.title = "Empty Trash"
+        configuration.title = Constants.emptytrashButtontext
         configuration.image = Images.emptyTrashImage.setImage()
-        configuration.imagePadding = 10
-        configuration.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
+        configuration.imagePadding = Constants.insetTen
+        configuration.contentInsets = NSDirectionalEdgeInsets(
+            top: Constants.insetTen,
+            leading: Constants.insetTen,
+            bottom: Constants.insetTen,
+            trailing: Constants.insetTen
+        )
         configuration.baseBackgroundColor = .trashButton
         let emptyTrashButton = UIButton(configuration: configuration)
         emptyTrashButton.semanticContentAttribute = .forceLeftToRight
@@ -96,25 +118,25 @@ final class TrashContainerView: CustomView {
         super.setupLayout()
         countLabel.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.leading.equalToSuperview().inset(20)
+            make.leading.equalToSuperview().inset(Constants.countLabelLeadingInset)
             
         }
         
         countInfoLabel.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.leading.equalTo(countLabel.snp.trailing).inset(-10)
+            make.leading.equalTo(countLabel.snp.trailing).inset(Constants.countInfoLabelLeadingInset)
         }
         
         emptyTrashButton.snp.makeConstraints { make in
-            make.trailing.top.bottom.equalToSuperview().inset(12)
-            make.width.equalToSuperview().multipliedBy(0.5)
+            make.trailing.top.bottom.equalToSuperview().inset(Constants.emptyTrashButtonInset)
+            make.width.equalToSuperview().multipliedBy(Constants.emptyTrashButtonWidthMultiplier)
         }
     }
     
     override func setupSizes() {
-        layer.cornerRadius = self.bounds.height * 0.33
+        layer.cornerRadius = self.bounds.height * Constants.parentCornerMultiplier
         layer.cornerCurve = .continuous
-        countLabel.font = .systemFont(ofSize: self.bounds.height * 0.36, weight: .bold)
-        countInfoLabel.font = .systemFont(ofSize: self.bounds.height * 0.194, weight: .medium)
+        countLabel.font = .systemFont(ofSize: self.bounds.height * Constants.countLabelFontSizeMultiplier, weight: .bold)
+        countInfoLabel.font = .systemFont(ofSize: self.bounds.height * Constants.countInfoLabelFontSizeMultiplier, weight: .medium)
     }
 }

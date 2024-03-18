@@ -19,6 +19,15 @@ protocol ViewWithUserImageDelegate: AnyObject {
 
 final class ViewWithUserImage: CustomView {
     
+    //MARK: - Constants
+    
+    private enum Constants {
+        static let buttonHeightMultiplier = 0.096
+        static let buttonBottomInset = 16
+        static let buttonLeadingtrailingInset = 60
+        static let parentCornerMultiplier = 0.038
+    }
+    
     //MARK: - Views
 
     private let userImageView = UIImageView()
@@ -94,22 +103,22 @@ final class ViewWithUserImage: CustomView {
         }
         
         deleteButton.snp.makeConstraints { make in
-            make.height.equalToSuperview().multipliedBy(0.096)
+            make.height.equalToSuperview().multipliedBy(Constants.buttonHeightMultiplier)
             make.width.equalTo(deleteButton.snp.height)
-            make.bottom.equalToSuperview().inset(16)
-            make.leading.equalToSuperview().inset(60)
+            make.bottom.equalToSuperview().inset(Constants.buttonBottomInset)
+            make.leading.equalToSuperview().inset(Constants.buttonLeadingtrailingInset)
         }
         
         saveButton.snp.makeConstraints { make in
-            make.height.equalToSuperview().multipliedBy(0.096)
+            make.height.equalToSuperview().multipliedBy(Constants.buttonHeightMultiplier)
             make.width.equalTo(deleteButton.snp.height)
-            make.bottom.equalToSuperview().inset(16)
-            make.trailing.equalToSuperview().inset(60)
+            make.bottom.equalToSuperview().inset(Constants.buttonBottomInset)
+            make.trailing.equalToSuperview().inset(Constants.buttonLeadingtrailingInset)
         }
     }
     
     override func setupSizes() {
-        layer.cornerRadius = self.bounds.height * 0.038
+        layer.cornerRadius = self.bounds.height * Constants.parentCornerMultiplier
         layer.cornerCurve = .continuous
         
     }

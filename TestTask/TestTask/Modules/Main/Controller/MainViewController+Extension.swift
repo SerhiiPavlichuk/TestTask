@@ -17,6 +17,7 @@ extension MainViewController: ViewWithUserImageDataSource {
 extension MainViewController: ViewWithUserImageDelegate {
     func deletePressed() {
 #warning("logic")
+
     }
     
     func savePressed() {
@@ -34,5 +35,28 @@ extension MainViewController: TrashContainerViewDataSource {
 extension MainViewController: TrashContainerViewDelegate {
     func emptyTrashPressed() {
 #warning("logic")
+    }
+}
+
+extension MainViewController: MainViewModelProtocol {
+    func showPermissionsAlert() {
+        let alert = AlertManager(delegate: self)
+        present(alert.createAlert(), animated: true)
+    }
+}
+
+extension MainViewController: AlertManagerDelegate {
+    func goToSettings() {
+        openSettings()
+    }
+    
+    func cancel() {
+        isHavePermissions = false
+    }
+}
+
+extension MainViewController: NoPermissionsViewDelegate {
+    func showSettings() {
+        openSettings()
     }
 }
