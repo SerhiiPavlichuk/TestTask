@@ -20,6 +20,9 @@
 		CE40F3052BA8BE2F00F5CFB1 /* ModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE40F3042BA8BE2F00F5CFB1 /* ModuleFactory.swift */; };
 		CE40F3072BA8BE4E00F5CFB1 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE40F3062BA8BE4E00F5CFB1 /* MainViewModel.swift */; };
 		CE40F3092BA8BE6E00F5CFB1 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE40F3082BA8BE6E00F5CFB1 /* MainViewController.swift */; };
+		CE40F30C2BA8C17700F5CFB1 /* ViewWithUserImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE40F30B2BA8C17700F5CFB1 /* ViewWithUserImage.swift */; };
+		CE40F30F2BA8C64000F5CFB1 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE40F30E2BA8C64000F5CFB1 /* CircleButton.swift */; };
+		CE40F3112BA8CACF00F5CFB1 /* MainViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE40F3102BA8CACF00F5CFB1 /* MainViewController+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +43,9 @@
 		CE40F3042BA8BE2F00F5CFB1 /* ModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleFactory.swift; sourceTree = "<group>"; };
 		CE40F3062BA8BE4E00F5CFB1 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		CE40F3082BA8BE6E00F5CFB1 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		CE40F30B2BA8C17700F5CFB1 /* ViewWithUserImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewWithUserImage.swift; sourceTree = "<group>"; };
+		CE40F30E2BA8C64000F5CFB1 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
+		CE40F3102BA8CACF00F5CFB1 /* MainViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +98,7 @@
 		CE40F2D42BA89A5B00F5CFB1 /* TestTask */ = {
 			isa = PBXGroup;
 			children = (
+				CE40F30D2BA8C62D00F5CFB1 /* CustomViews */,
 				CE40F3032BA8BE2500F5CFB1 /* Factories */,
 				CE40F2FF2BA8BDF500F5CFB1 /* Modules */,
 				CE40F2FA2BA8BBB800F5CFB1 /* Builders */,
@@ -159,6 +166,7 @@
 		CE40F3002BA8BDF900F5CFB1 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				CE40F30A2BA8C14500F5CFB1 /* Views */,
 				CE40F3022BA8BE0300F5CFB1 /* Controller */,
 				CE40F3012BA8BDFE00F5CFB1 /* ViewModel */,
 			);
@@ -177,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				CE40F3082BA8BE6E00F5CFB1 /* MainViewController.swift */,
+				CE40F3102BA8CACF00F5CFB1 /* MainViewController+Extension.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -187,6 +196,22 @@
 				CE40F3042BA8BE2F00F5CFB1 /* ModuleFactory.swift */,
 			);
 			path = Factories;
+			sourceTree = "<group>";
+		};
+		CE40F30A2BA8C14500F5CFB1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CE40F30B2BA8C17700F5CFB1 /* ViewWithUserImage.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CE40F30D2BA8C62D00F5CFB1 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				CE40F30E2BA8C64000F5CFB1 /* CircleButton.swift */,
+			);
+			path = CustomViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -310,9 +335,12 @@
 				CE40F3052BA8BE2F00F5CFB1 /* ModuleFactory.swift in Sources */,
 				CE40F2D82BA89A5B00F5CFB1 /* SceneDelegate.swift in Sources */,
 				CE40F2FE2BA8BBD800F5CFB1 /* ViewBuilder.swift in Sources */,
+				CE40F30F2BA8C64000F5CFB1 /* CircleButton.swift in Sources */,
 				CE40F2F22BA8B6A200F5CFB1 /* UIColor+Extension.swift in Sources */,
 				CE40F3072BA8BE4E00F5CFB1 /* MainViewModel.swift in Sources */,
 				CE40F3092BA8BE6E00F5CFB1 /* MainViewController.swift in Sources */,
+				CE40F30C2BA8C17700F5CFB1 /* ViewWithUserImage.swift in Sources */,
+				CE40F3112BA8CACF00F5CFB1 /* MainViewController+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,7 +8,7 @@
 import UIKit
 
 enum Images: String {
-    case backgroundImage = "deleteImage"
+    case deleteImage = "deleteImage"
     case acceptImage = "acceptImage"
     case emptyTrashImage = "emptyTrashImage"
     

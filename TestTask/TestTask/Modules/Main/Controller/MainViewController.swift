@@ -18,7 +18,8 @@ final class MainViewController: UIViewController {
     
     //MARK: - Views
     
-
+    let viewWithUserImage = ViewWithUserImage()
+    
     //MARK: - Properties
     
     let viewModel: MainViewModel
@@ -39,6 +40,7 @@ final class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        initializeViews()
     }
     
     override func viewDidLayoutSubviews() {
@@ -49,12 +51,25 @@ final class MainViewController: UIViewController {
     //MARK: - Methods
     
     private func setupUI() {
-
+        view.backgroundColor = .background
+        
+        view.addSubviews(
+            viewWithUserImage
+        )
+    }
+    
+    private func initializeViews() {
+        viewWithUserImage.dataSource = self
+        viewWithUserImage.delegate = self
     }
     
     //MARK: - Layout
     
     private func setupConstraints() {
-
+        viewWithUserImage.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(Constraints.leadingTrailingInset)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(40)
+            make.height.equalToSuperview().multipliedBy(0.695)
+        }
     }
 }
