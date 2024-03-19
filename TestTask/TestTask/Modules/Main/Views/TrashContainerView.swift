@@ -101,10 +101,9 @@ final class TrashContainerView: CustomView {
     
     private func configureUI() {
         guard let dataSource else { return }
-#warning("logic")
         if let count = dataSource.countOfImages(self) {
             emptyTrashButton.isEnabled = count != .zero
-            
+            countLabel.text = String(count)
         }
     }
     

@@ -28,6 +28,8 @@
 		CE40F3192BA8DAA000F5CFB1 /* PhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE40F3182BA8DAA000F5CFB1 /* PhotoManager.swift */; };
 		CE47ACCD2BA8DD5F00004476 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE47ACCC2BA8DD5F00004476 /* AlertManager.swift */; };
 		CE47ACCF2BA8E5E900004476 /* NoPermissionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE47ACCE2BA8E5E900004476 /* NoPermissionsView.swift */; };
+		CE82E9322BAA1500002D840D /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE82E9312BAA1500002D840D /* GlobalVariables.swift */; };
+		CE82E9352BAA18E9002D840D /* ErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE82E9342BAA18E9002D840D /* ErrorType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +58,8 @@
 		CE40F3182BA8DAA000F5CFB1 /* PhotoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoManager.swift; sourceTree = "<group>"; };
 		CE47ACCC2BA8DD5F00004476 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		CE47ACCE2BA8E5E900004476 /* NoPermissionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoPermissionsView.swift; sourceTree = "<group>"; };
+		CE82E9312BAA1500002D840D /* GlobalVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
+		CE82E9342BAA18E9002D840D /* ErrorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +112,7 @@
 		CE40F2D42BA89A5B00F5CFB1 /* TestTask */ = {
 			isa = PBXGroup;
 			children = (
+				CE82E9332BAA18DD002D840D /* ErrorEnum */,
 				CE40F3172BA8DA8B00F5CFB1 /* Managers */,
 				CE40F30D2BA8C62D00F5CFB1 /* CustomViews */,
 				CE40F3032BA8BE2500F5CFB1 /* Factories */,
@@ -154,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				CE40F2F62BA8B7D200F5CFB1 /* Images.swift */,
+				CE82E9312BAA1500002D840D /* GlobalVariables.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -243,6 +249,14 @@
 				CE47ACCC2BA8DD5F00004476 /* AlertManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		CE82E9332BAA18DD002D840D /* ErrorEnum */ = {
+			isa = PBXGroup;
+			children = (
+				CE82E9342BAA18E9002D840D /* ErrorType.swift */,
+			);
+			path = ErrorEnum;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -365,10 +379,12 @@
 				CE40F3192BA8DAA000F5CFB1 /* PhotoManager.swift in Sources */,
 				CE40F2F92BA8B96400F5CFB1 /* UIVIew+Extension.swift in Sources */,
 				CE40F2F72BA8B7D200F5CFB1 /* Images.swift in Sources */,
+				CE82E9352BAA18E9002D840D /* ErrorType.swift in Sources */,
 				CE40F2FC2BA8BBC300F5CFB1 /* LabelBuilder.swift in Sources */,
 				CE40F3052BA8BE2F00F5CFB1 /* ModuleFactory.swift in Sources */,
 				CE40F2D82BA89A5B00F5CFB1 /* SceneDelegate.swift in Sources */,
 				CE40F2FE2BA8BBD800F5CFB1 /* ViewBuilder.swift in Sources */,
+				CE82E9322BAA1500002D840D /* GlobalVariables.swift in Sources */,
 				CE40F30F2BA8C64000F5CFB1 /* CircleButton.swift in Sources */,
 				CE40F2F22BA8B6A200F5CFB1 /* UIColor+Extension.swift in Sources */,
 				CE40F3072BA8BE4E00F5CFB1 /* MainViewModel.swift in Sources */,

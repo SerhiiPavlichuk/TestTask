@@ -43,7 +43,7 @@ final class PhotoManager {
         }
     }
     
-    func fetchImage(for asset: PHAsset) async throws -> UIImage? {
+    func fetchImage(for asset: PHAsset, size: CGSize) async throws -> UIImage? {
         return try await withCheckedThrowingContinuation { continuation in
             let manager = PHImageManager.default()
             let options = PHImageRequestOptions()
@@ -53,7 +53,7 @@ final class PhotoManager {
             options.resizeMode = .exact
             
             manager.requestImage(for: asset,
-                                 targetSize: PHImageManagerMaximumSize,
+                                 targetSize: size,
                                  contentMode: .aspectFill,
                                  options: options) { image, _ in
                 continuation.resume(returning: image)

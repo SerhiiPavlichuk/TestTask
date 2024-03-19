@@ -23,8 +23,8 @@ final class MainViewController: UIViewController {
     
     //MARK: - Views
     
-    private let viewWithUserImage = ViewWithUserImage()
-    private let trashContainerView = TrashContainerView()
+    let viewWithUserImage = ViewWithUserImage()
+    let trashContainerView = TrashContainerView()
     private let noPermissionsView = NoPermissionsView()
     
     //MARK: - Properties
@@ -107,6 +107,14 @@ final class MainViewController: UIViewController {
     @objc private func appWillEnterForeground() {
         Task {
             await viewModel.askPermissions()
+        }
+    }
+    
+    func loadNewImage() {
+        Task {
+            await viewModel.loadImage(with: viewWithUserImage.userImageView.frame.size)
+            await viewWithUserImage.reloadData()
+            await trashContainerView.reloadData()
         }
     }
     

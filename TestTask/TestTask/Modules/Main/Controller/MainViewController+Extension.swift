@@ -9,43 +9,44 @@ import UIKit
 
 extension MainViewController: ViewWithUserImageDataSource {
     func imageFromLibrary(_ view: ViewWithUserImage) -> UIImage? {
-#warning("logic")
-        return UIImage()
+        viewModel.currentImage
     }
 }
 
 extension MainViewController: ViewWithUserImageDelegate {
     func deletePressed() {
-#warning("logic")
-
+        viewModel.addImagetoTrash()
+        loadNewImage()
     }
     
     func savePressed() {
-#warning("logic")
+        viewModel.saveImage()
+        loadNewImage()
     }
 }
 
 extension MainViewController: TrashContainerViewDataSource {
     func countOfImages(_ view: TrashContainerView) -> Int? {
-#warning("logic")
-        return 0
+        GlobalVariables.photosInTrash.count
     }
 }
 
 extension MainViewController: TrashContainerViewDelegate {
     func emptyTrashPressed() {
-#warning("logic")
+        Task {
+            await viewModel.emptyTrash()
+            await trashContainerView.reloadData()
+        }
     }
 }
 
 extension MainViewController: MainViewModelProtocol {
-    func showErrorAlert() {
-        let alert = AlertManager(type: .error, delegate: self)
-        present(alert.createAlert(), animated: true)
+    func assetsLoaded() {
+        loadNewImage()
     }
     
-    func showPermissionsAlert() {
-        let alert = AlertManager(type: .permissions, delegate: self)
+    func showAlert(with error: ErrorType) {
+        let alert = AlertManager(type: error, delegate: self)
         present(alert.createAlert(), animated: true)
     }
 }

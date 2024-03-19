@@ -30,7 +30,7 @@ final class ViewWithUserImage: CustomView {
     
     //MARK: - Views
 
-    private let userImageView = UIImageView()
+    let userImageView = UIImageView()
     
     private lazy var deleteButton: CircleButton = {
         let deleteButton = CircleButton(type: .delete)
