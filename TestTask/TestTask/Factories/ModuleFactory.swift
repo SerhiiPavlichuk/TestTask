@@ -16,7 +16,7 @@ final class ModuleFactory {
     func createModule(type: ModuleType) -> UIViewController {
         switch type {
         case .main:
-            let viewModel = MainViewModel()
+            let viewModel = MainViewModel(permissionChecker: PhotoLibraryPermissionChecker(), photoLibraryManager: PhotoLibraryManager())
             return MainViewController(viewModel: viewModel)
 
         }

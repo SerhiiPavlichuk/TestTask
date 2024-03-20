@@ -9,7 +9,7 @@ import UIKit
 
 extension MainViewController: ViewWithUserImageDataSource {
     func imageFromLibrary(_ view: ViewWithUserImage) -> UIImage? {
-        viewModel.currentImage
+        return UIImage(data: viewModel.currentImage?.data ?? Data())
     }
 }
 
@@ -41,6 +41,10 @@ extension MainViewController: TrashContainerViewDelegate {
 }
 
 extension MainViewController: MainViewModelProtocol {
+    func imagesAreFinish() {
+        noImagesToContinue.isHidden = false
+    }
+    
     func assetsLoaded() {
         loadNewImage()
     }

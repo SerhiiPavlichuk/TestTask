@@ -5,8 +5,7 @@
 //  Created by User on 18.03.2024.
 //
 
-import UIKit
-import Photos
+import Foundation
 
 protocol MainViewModelProtocol: AnyObject {
     func showAlert(with error: ErrorType)
@@ -19,13 +18,21 @@ final class MainViewModel {
     
     weak var vc: MainViewModelProtocol?
     
-    var assets: [PHAsset] = []
-    var currentImage: UIImage?
+    var assets: [AssetIdentifier] = []
+    var currentImage: ImageRepresentation?
     
     // MARK: - Init
+    
+    private let permissionChecker: PhotoLibraryPermissionChecking
+    private let photoLibraryManager: PhotoLibraryManaging
+    
+    init(permissionChecker: PhotoLibraryPermissionChecking, photoLibraryManager: PhotoLibraryManaging) {
+        self.permissionChecker = permissionChecker
+        self.photoLibraryManager = photoLibraryManager
+    }
 
     func askPermissions() async {
-        let status = await PhotoManager.shared.checkPermission()
+        let status = await permissionChecker.checkPermission()
         if status == .authorized {
             await getAllImageAssets()
         } else if status == .denied {
@@ -37,11 +44,12 @@ final class MainViewModel {
     
     func getAllImageAssets() async {
         do {
-            let assets = try await PhotoManager.shared.fetchAllImageAssets()
+            let assets = try await photoLibraryManager.fetchAllImageAssets()
             let filteredAssets = assets.filter { asset in
-                !GlobalVariables.processedPhotos.contains(asset.localIdentifier) &&
-                !GlobalVariables.photosInTrash.contains(asset.localIdentifier)
+                !GlobalVariables.processedPhotos.contains(asset.identifier) &&
+                !GlobalVariables.photosInTrash.contains(asset.identifier)
             }
+            
             self.assets = filteredAssets
             vc?.assetsLoaded()
         } catch {
@@ -51,8 +59,11 @@ final class MainViewModel {
     
     func loadImage(with size: CGSize) async {
         do {
-            guard let asset = assets.first else { return }
-            let image = try await PhotoManager.shared.fetchImage(for: asset, size: size)
+            guard let asset = assets.first else { 
+                currentImage = nil
+                return
+            }
+            let image = try await photoLibraryManager.fetchImage(for: asset, size: size)
             currentImage = image
         } catch {
             vc?.showAlert(with: .errorIamgeLoading)
@@ -62,18 +73,18 @@ final class MainViewModel {
     func addImagetoTrash() {
         guard let asset = assets.first else { return }
         assets.removeFirst()
-        GlobalVariables.photosInTrash.append(asset.localIdentifier)
+        GlobalVariables.photosInTrash.append(asset.identifier)
     }
     
     func saveImage() {
         guard let asset = assets.first else { return }
         assets.removeFirst()
-        GlobalVariables.processedPhotos.append(asset.localIdentifier)
+        GlobalVariables.processedPhotos.append(asset.identifier)
     }
     
     func emptyTrash() async {
         do {
-            let _ = try await PhotoManager.shared.deletePhotos(with: GlobalVariables.photosInTrash)
+            let _ = try await photoLibraryManager.deletePhotos(with: GlobalVariables.photosInTrash)
             GlobalVariables.photosInTrash.removeAll()
         } catch {
             vc?.showAlert(with: .deletionError)

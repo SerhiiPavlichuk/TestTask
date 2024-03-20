@@ -79,12 +79,7 @@ final class ViewWithUserImage: CustomView {
     
     private func configureUI() {
         guard let dataSource else { return }
-        
-        if let image = dataSource.imageFromLibrary(self) {
-            userImageView.image = image
-        } else {
-            
-        }
+        userImageView.image = dataSource.imageFromLibrary(self)
     }
     
     private func deleteButtonPressed() {

@@ -25,9 +25,12 @@
 		CE40F3112BA8CACF00F5CFB1 /* MainViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE40F3102BA8CACF00F5CFB1 /* MainViewController+Extension.swift */; };
 		CE40F3132BA8CC5A00F5CFB1 /* TrashContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE40F3122BA8CC5A00F5CFB1 /* TrashContainerView.swift */; };
 		CE40F3162BA8D42B00F5CFB1 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE40F3152BA8D42B00F5CFB1 /* CustomView.swift */; };
-		CE40F3192BA8DAA000F5CFB1 /* PhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE40F3182BA8DAA000F5CFB1 /* PhotoManager.swift */; };
 		CE47ACCD2BA8DD5F00004476 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE47ACCC2BA8DD5F00004476 /* AlertManager.swift */; };
 		CE47ACCF2BA8E5E900004476 /* NoPermissionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE47ACCE2BA8E5E900004476 /* NoPermissionsView.swift */; };
+		CE4846CD2BAB6DDE00B5B8A2 /* ImageRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4846CC2BAB6DDE00B5B8A2 /* ImageRepresentation.swift */; };
+		CE4846CF2BAB6DEB00B5B8A2 /* AssetIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4846CE2BAB6DEB00B5B8A2 /* AssetIdentifier.swift */; };
+		CE4846D12BAB6E0C00B5B8A2 /* PhotoLibraryPermissionChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4846D02BAB6E0C00B5B8A2 /* PhotoLibraryPermissionChecker.swift */; };
+		CE4846D32BAB6E2B00B5B8A2 /* PhotoLibraryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4846D22BAB6E2B00B5B8A2 /* PhotoLibraryManager.swift */; };
 		CE82E9322BAA1500002D840D /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE82E9312BAA1500002D840D /* GlobalVariables.swift */; };
 		CE82E9352BAA18E9002D840D /* ErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE82E9342BAA18E9002D840D /* ErrorType.swift */; };
 /* End PBXBuildFile section */
@@ -55,9 +58,12 @@
 		CE40F3102BA8CACF00F5CFB1 /* MainViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+Extension.swift"; sourceTree = "<group>"; };
 		CE40F3122BA8CC5A00F5CFB1 /* TrashContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashContainerView.swift; sourceTree = "<group>"; };
 		CE40F3152BA8D42B00F5CFB1 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
-		CE40F3182BA8DAA000F5CFB1 /* PhotoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoManager.swift; sourceTree = "<group>"; };
 		CE47ACCC2BA8DD5F00004476 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		CE47ACCE2BA8E5E900004476 /* NoPermissionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoPermissionsView.swift; sourceTree = "<group>"; };
+		CE4846CC2BAB6DDE00B5B8A2 /* ImageRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRepresentation.swift; sourceTree = "<group>"; };
+		CE4846CE2BAB6DEB00B5B8A2 /* AssetIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetIdentifier.swift; sourceTree = "<group>"; };
+		CE4846D02BAB6E0C00B5B8A2 /* PhotoLibraryPermissionChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryPermissionChecker.swift; sourceTree = "<group>"; };
+		CE4846D22BAB6E2B00B5B8A2 /* PhotoLibraryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryManager.swift; sourceTree = "<group>"; };
 		CE82E9312BAA1500002D840D /* GlobalVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
 		CE82E9342BAA18E9002D840D /* ErrorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -112,6 +118,7 @@
 		CE40F2D42BA89A5B00F5CFB1 /* TestTask */ = {
 			isa = PBXGroup;
 			children = (
+				CE4846CB2BAB6DD200B5B8A2 /* Models */,
 				CE82E9332BAA18DD002D840D /* ErrorEnum */,
 				CE40F3172BA8DA8B00F5CFB1 /* Managers */,
 				CE40F30D2BA8C62D00F5CFB1 /* CustomViews */,
@@ -245,10 +252,20 @@
 		CE40F3172BA8DA8B00F5CFB1 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				CE40F3182BA8DAA000F5CFB1 /* PhotoManager.swift */,
 				CE47ACCC2BA8DD5F00004476 /* AlertManager.swift */,
+				CE4846D02BAB6E0C00B5B8A2 /* PhotoLibraryPermissionChecker.swift */,
+				CE4846D22BAB6E2B00B5B8A2 /* PhotoLibraryManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		CE4846CB2BAB6DD200B5B8A2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CE4846CC2BAB6DDE00B5B8A2 /* ImageRepresentation.swift */,
+				CE4846CE2BAB6DEB00B5B8A2 /* AssetIdentifier.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		CE82E9332BAA18DD002D840D /* ErrorEnum */ = {
@@ -374,10 +391,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE40F3162BA8D42B00F5CFB1 /* CustomView.swift in Sources */,
+				CE4846D12BAB6E0C00B5B8A2 /* PhotoLibraryPermissionChecker.swift in Sources */,
 				CE47ACCD2BA8DD5F00004476 /* AlertManager.swift in Sources */,
 				CE40F2D62BA89A5B00F5CFB1 /* AppDelegate.swift in Sources */,
-				CE40F3192BA8DAA000F5CFB1 /* PhotoManager.swift in Sources */,
 				CE40F2F92BA8B96400F5CFB1 /* UIVIew+Extension.swift in Sources */,
+				CE4846CF2BAB6DEB00B5B8A2 /* AssetIdentifier.swift in Sources */,
 				CE40F2F72BA8B7D200F5CFB1 /* Images.swift in Sources */,
 				CE82E9352BAA18E9002D840D /* ErrorType.swift in Sources */,
 				CE40F2FC2BA8BBC300F5CFB1 /* LabelBuilder.swift in Sources */,
@@ -385,10 +403,12 @@
 				CE40F2D82BA89A5B00F5CFB1 /* SceneDelegate.swift in Sources */,
 				CE40F2FE2BA8BBD800F5CFB1 /* ViewBuilder.swift in Sources */,
 				CE82E9322BAA1500002D840D /* GlobalVariables.swift in Sources */,
+				CE4846D32BAB6E2B00B5B8A2 /* PhotoLibraryManager.swift in Sources */,
 				CE40F30F2BA8C64000F5CFB1 /* CircleButton.swift in Sources */,
 				CE40F2F22BA8B6A200F5CFB1 /* UIColor+Extension.swift in Sources */,
 				CE40F3072BA8BE4E00F5CFB1 /* MainViewModel.swift in Sources */,
 				CE40F3092BA8BE6E00F5CFB1 /* MainViewController.swift in Sources */,
+				CE4846CD2BAB6DDE00B5B8A2 /* ImageRepresentation.swift in Sources */,
 				CE40F30C2BA8C17700F5CFB1 /* ViewWithUserImage.swift in Sources */,
 				CE40F3112BA8CACF00F5CFB1 /* MainViewController+Extension.swift in Sources */,
 				CE47ACCF2BA8E5E900004476 /* NoPermissionsView.swift in Sources */,

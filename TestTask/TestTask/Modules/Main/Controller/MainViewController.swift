@@ -27,6 +27,20 @@ final class MainViewController: UIViewController {
     let trashContainerView = TrashContainerView()
     private let noPermissionsView = NoPermissionsView()
     
+    lazy var activity: UIActivityIndicatorView = {
+        let activity = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
+        activity.hidesWhenStopped = true
+        activity.color = .white
+        return activity
+    }()
+    
+    let noImagesToContinue = LabelBuilder()
+        .setText("You already process all images")
+        .setTextAligtment(.center)
+        .setNumbersLines(2)
+        .setTextColor(.deleteButtonColor)
+        .build()
+    
     //MARK: - Properties
     
     let viewModel: MainViewModel
@@ -63,9 +77,11 @@ final class MainViewController: UIViewController {
         setupConstraints()
     }
     
-    deinit {
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
         NotificationCenter.default.removeObserver(self, name: UIApplication.willEnterForegroundNotification, object: nil)
     }
+    
     
     //MARK: - Methods
     
@@ -75,10 +91,13 @@ final class MainViewController: UIViewController {
         view.addSubviews(
             viewWithUserImage,
             trashContainerView,
-            noPermissionsView
+            noPermissionsView,
+            activity,
+            noImagesToContinue
         )
         
         noPermissionsView.isHidden = true
+        noImagesToContinue.isHidden = true
     }
     
     private func initialize() {
@@ -112,10 +131,30 @@ final class MainViewController: UIViewController {
     
     func loadNewImage() {
         Task {
+            changeActivity(isStrated: true)
             await viewModel.loadImage(with: viewWithUserImage.userImageView.frame.size)
+            
+            changeNoImagesLabel(viewModel.currentImage != nil)
+            
             await viewWithUserImage.reloadData()
             await trashContainerView.reloadData()
+            changeActivity(isStrated: false)
         }
+    }
+    
+    @MainActor
+    private func changeActivity(isStrated: Bool) {
+        switch isStrated {
+        case true:
+            activity.startAnimating()
+        case false:
+            activity.stopAnimating()
+        }
+    }
+    
+    @MainActor
+    private func changeNoImagesLabel(_ isImagesFinish: Bool) {
+        noImagesToContinue.isHidden = isImagesFinish
     }
     
     //MARK: - Layout
@@ -137,6 +176,14 @@ final class MainViewController: UIViewController {
             make.center.equalToSuperview()
             make.width.equalToSuperview().inset(Constants.leadingTrailingInset)
             make.height.equalTo(Constants.noPermissionSize)
+        }
+        
+        activity.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
+        
+        noImagesToContinue.snp.makeConstraints { make in
+            make.center.equalToSuperview()
         }
     }
 }
