@@ -15,10 +15,18 @@ protocol PhotoLibraryManaging {
 }
 
 final class PhotoLibraryManager: PhotoLibraryManaging {
+    
+    private enum Constants {
+        static let mediaType = "mediaType = %d"
+        static let creatinDate = "creationDate"
+        static let domain = "PhotoLibraryManager"
+        static let errorDecription = "Failed to convert UIImage to Data"
+    }
+    
     func fetchAllImageAssets() async throws -> [AssetIdentifier] {
         let fetchOptions = PHFetchOptions()
-        fetchOptions.predicate = NSPredicate(format: "mediaType = %d", PHAssetMediaType.image.rawValue)
-        fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+        fetchOptions.predicate = NSPredicate(format: Constants.mediaType, PHAssetMediaType.image.rawValue)
+        fetchOptions.sortDescriptors = [NSSortDescriptor(key: Constants.creatinDate, ascending: false)]
         
         let result = PHAsset.fetchAssets(with: fetchOptions)
         var assetIdentifiers: [AssetIdentifier] = []
@@ -33,16 +41,17 @@ final class PhotoLibraryManager: PhotoLibraryManaging {
             return nil
         }
         
+        let options = PHImageRequestOptions()
+        options.version = .current
+        options.isSynchronous = false
+        options.deliveryMode = .highQualityFormat
+        options.resizeMode = .exact
+        options.isNetworkAccessAllowed = true
+
         return try await withCheckedThrowingContinuation { continuation in
-            let options = PHImageRequestOptions()
-            options.version = .current
-            options.isSynchronous = false
-            options.deliveryMode = .highQualityFormat
-            options.resizeMode = .exact
-            
-            PHImageManager.default().requestImageData(for: asset, options: options) { (data, _, _, _) in
-                guard let data = data else {
-                    continuation.resume(returning: nil)
+            PHImageManager.default().requestImage(for: asset, targetSize: size, contentMode: .aspectFill, options: options) { image, _ in
+                guard let image = image, let data = image.pngData() else {
+                    continuation.resume(throwing: NSError(domain: Constants.domain, code: 0, userInfo: [NSLocalizedDescriptionKey: Constants.errorDecription]))
                     return
                 }
                 continuation.resume(returning: ImageRepresentation(data: data))
