@@ -5,7 +5,6 @@
 //  Created by User on 20.03.2024.
 //
 
-import UIKit
 import Photos
 
 protocol PhotoLibraryManaging {
@@ -16,12 +15,16 @@ protocol PhotoLibraryManaging {
 
 final class PhotoLibraryManager: PhotoLibraryManaging {
     
+    //MARK: - Constants
+    
     private enum Constants {
         static let mediaType = "mediaType = %d"
         static let creatinDate = "creationDate"
         static let domain = "PhotoLibraryManager"
         static let errorDecription = "Failed to convert UIImage to Data"
     }
+    
+    //MARK: - Methods
     
     func fetchAllImageAssets() async throws -> [AssetIdentifier] {
         let fetchOptions = PHFetchOptions()

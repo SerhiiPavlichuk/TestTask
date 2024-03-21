@@ -15,13 +15,27 @@ protocol AlertManagerDelegate: AnyObject {
 
 struct AlertManager {
     
+    //MARK: - Constants
+    
+    private enum Constants {
+        static let cancel = "Cancel"
+        static let settings = "Settings"
+        static let tryAgain = "Try again"
+    }
+    
+    //MARK: - Properties
+    
     weak var delegate: AlertManagerDelegate?
     let type: ErrorType
+    
+    //MARK: - Init
     
     init(type: ErrorType, delegate: AlertManagerDelegate? = nil) {
         self.type = type
         self.delegate = delegate
     }
+    
+    //MARK: - Methods
 
     func createAlert() -> UIAlertController {
         let alert = UIAlertController(title: type.title, message: type.message, preferredStyle: .alert)
@@ -36,7 +50,7 @@ struct AlertManager {
         }
         alert.addAction(action)
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) {_ in
+        let cancelAction = UIAlertAction(title: Constants.cancel, style: .cancel) {_ in
             self.delegate?.cancel()
         }
         alert.addAction(cancelAction)
@@ -45,25 +59,25 @@ struct AlertManager {
     private func configureAlert(_ alert: UIAlertController, for type: ErrorType) {
         switch type {
         case .donthavePermission:
-            let actionTitle = "Settings"
+            let actionTitle = Constants.settings
             let action = UIAlertAction(title: actionTitle, style: .default) {_ in
                 self.delegate?.goToSettings()
             }
             alert.addAction(action)
             
      
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+            let cancelAction = UIAlertAction(title: Constants.cancel, style: .cancel) { _ in
                 self.delegate?.cancel()
             }
             alert.addAction(cancelAction)
         case .showError, .errorIamgeLoading, .deletionError:
-            let actionTitle = "Try again"
+            let actionTitle = Constants.tryAgain
             let action = UIAlertAction(title: actionTitle, style: .default) {_ in
                 self.delegate?.retry()
             }
             alert.addAction(action)
             
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+            let cancelAction = UIAlertAction(title: Constants.cancel, style: .cancel)
             alert.addAction(cancelAction)
 
         }

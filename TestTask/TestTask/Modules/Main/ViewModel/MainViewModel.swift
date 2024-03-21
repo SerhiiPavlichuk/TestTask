@@ -21,15 +21,17 @@ final class MainViewModel {
     var assets: [AssetIdentifier] = []
     var currentImage: ImageRepresentation?
     
-    // MARK: - Init
-    
     private let permissionChecker: PhotoLibraryPermissionChecking
     private let photoLibraryManager: PhotoLibraryManaging
+    
+    // MARK: - Init
     
     init(permissionChecker: PhotoLibraryPermissionChecking, photoLibraryManager: PhotoLibraryManaging) {
         self.permissionChecker = permissionChecker
         self.photoLibraryManager = photoLibraryManager
     }
+    
+    //MARK: - Methods
 
     func askPermissions() async {
         let status = await permissionChecker.checkPermission()

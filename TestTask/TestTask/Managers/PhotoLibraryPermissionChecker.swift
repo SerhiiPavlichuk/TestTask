@@ -7,12 +7,10 @@
 
 
 import Photos
-import UIKit
 
 protocol PhotoLibraryPermissionChecking {
     func checkPermission() async -> PHAuthorizationStatus
 }
-
 
 final class PhotoLibraryPermissionChecker: PhotoLibraryPermissionChecking {
     func checkPermission() async -> PHAuthorizationStatus {
